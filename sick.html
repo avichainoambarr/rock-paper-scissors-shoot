@@ -1,0 +1,101 @@
+<center>
+    <h1>
+        <u>
+            rock paper scissors
+        </u>
+    </h1>
+</center>
+
+ <html> 
+    <head>
+        <style>
+            body {
+                font-size: 20px;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                background: linear-gradient( purple,  aqua,  blue  );
+                color:goldenrod;
+                text-shadow: 2px 2px 1px black;
+            }
+            .button{
+                height: 100px ;
+                width: 80px;
+                font-size: 50px;
+                border-radius: 100px;
+                margin-top: 10px;
+                margin-left: 20opx;
+                margin-right: 20px;
+                background: linear-gradient(red, orange,yellow, green, blue, purple, violet )
+            }
+            #game{
+             displayxs: none;
+
+            }
+            input{
+                font-size: 40px;
+            }
+            
+        </style>
+        <script>
+        
+            var moves=['rock','paper','scissors',];
+            var wins = 0;
+            var losses = 0;
+            var ties = 0;
+            
+
+
+            function playmove(move){
+                var random = Math.random();
+                random=random*3
+                random= Math.floor(random)
+                var paper_wins = move==1 && random==0
+                var scissors_wins = move==2 && random==1
+                var rock_wins = move==0 && random==2
+                var result=moves[move] +" vs "+moves[random] +"";
+                
+                if(move == random){ 
+                    result += ": you tied" 
+                    ties++
+                }else if (rock_wins|| paper_wins|| scissors_wins) {
+                    result +=": you win "
+                    wins++
+                }else { 
+                    result += ": you lose";
+                    losses++;
+                }
+
+            
+                console.log(result);
+                var result_div=document.getElementById("result")
+                result_div.innerHTML = result;
+                var scores_div = document.getElementById("scores")
+                scores_div.innerHTML="wins, "+ wins +" | losses:"+losses +" | ties: " + ties;
+
+            }
+            
+            </script>
+        </head>
+        <body>
+        <center>
+            
+                
+
+            </div>
+            <div id="game" >
+
+            <h1>
+                
+                <input type="button"class="button" value="🪨" onclick="playmove(0)">
+                <input type="button"class="button" value="📄" onclick="playmove(1)">
+                <input type="button"class="button" value="✂️" onclick="playmove(2)">
+            </h1>  
+            <h2 id="result"></h2>
+            <h3 id="scores"></h3>
+
+
+            
+                
+            </div>
+        </center>
+    </body>
+</html>
